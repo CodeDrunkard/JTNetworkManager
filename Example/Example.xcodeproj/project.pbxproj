@@ -14,6 +14,12 @@
 		6BC3E7971E87A2C400389903 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BC3E7951E87A2C400389903 /* LaunchScreen.storyboard */; };
 		6BC3E7A11E87A2FA00389903 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC3E79F1E87A2FA00389903 /* Download.swift */; };
 		6BC3E7A21E87A2FA00389903 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC3E7A01E87A2FA00389903 /* DownloadManager.swift */; };
+		6BC3E7A51E88A60E00389903 /* HTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC3E7A41E88A60E00389903 /* HTTPManager.swift */; };
+		6BC3E7A71E88A6AE00389903 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC3E7A61E88A6AE00389903 /* HTTPMethod.swift */; };
+		6BE57A211F1C640A00123447 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE57A201F1C640A00123447 /* Network.swift */; };
+		6BE57A231F1C694300123447 /* UpdateFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE57A221F1C694300123447 /* UpdateFile.swift */; };
+		6BE57A251F1C8FE900123447 /* logo@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6BE57A241F1C8FE900123447 /* logo@2x.jpg */; };
+		6BE57A271F1C94E100123447 /* lvwenhancom.cer in Resources */ = {isa = PBXBuildFile; fileRef = 6BE57A261F1C94E100123447 /* lvwenhancom.cer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,12 @@
 		6BC3E7981E87A2C400389903 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BC3E79F1E87A2FA00389903 /* Download.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		6BC3E7A01E87A2FA00389903 /* DownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		6BC3E7A41E88A60E00389903 /* HTTPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPManager.swift; sourceTree = "<group>"; };
+		6BC3E7A61E88A6AE00389903 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		6BE57A201F1C640A00123447 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		6BE57A221F1C694300123447 /* UpdateFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateFile.swift; sourceTree = "<group>"; };
+		6BE57A241F1C8FE900123447 /* logo@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "logo@2x.jpg"; sourceTree = "<group>"; };
+		6BE57A261F1C94E100123447 /* lvwenhancom.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = lvwenhancom.cer; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +77,8 @@
 				6BC3E7931E87A2C400389903 /* Assets.xcassets */,
 				6BC3E7951E87A2C400389903 /* LaunchScreen.storyboard */,
 				6BC3E7981E87A2C400389903 /* Info.plist */,
+				6BE57A241F1C8FE900123447 /* logo@2x.jpg */,
+				6BE57A261F1C94E100123447 /* lvwenhancom.cer */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -74,6 +88,10 @@
 			children = (
 				6BC3E79F1E87A2FA00389903 /* Download.swift */,
 				6BC3E7A01E87A2FA00389903 /* DownloadManager.swift */,
+				6BC3E7A41E88A60E00389903 /* HTTPManager.swift */,
+				6BC3E7A61E88A6AE00389903 /* HTTPMethod.swift */,
+				6BE57A221F1C694300123447 /* UpdateFile.swift */,
+				6BE57A201F1C640A00123447 /* Network.swift */,
 			);
 			name = NetworkManager;
 			path = ../NetworkManager;
@@ -140,8 +158,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BC3E7971E87A2C400389903 /* LaunchScreen.storyboard in Resources */,
+				6BE57A251F1C8FE900123447 /* logo@2x.jpg in Resources */,
 				6BC3E7941E87A2C400389903 /* Assets.xcassets in Resources */,
 				6BC3E7921E87A2C400389903 /* Main.storyboard in Resources */,
+				6BE57A271F1C94E100123447 /* lvwenhancom.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +174,11 @@
 			files = (
 				6BC3E7A11E87A2FA00389903 /* Download.swift in Sources */,
 				6BC3E78F1E87A2C400389903 /* ViewController.swift in Sources */,
+				6BC3E7A51E88A60E00389903 /* HTTPManager.swift in Sources */,
+				6BC3E7A71E88A6AE00389903 /* HTTPMethod.swift in Sources */,
 				6BC3E78D1E87A2C400389903 /* AppDelegate.swift in Sources */,
+				6BE57A211F1C640A00123447 /* Network.swift in Sources */,
+				6BE57A231F1C694300123447 /* UpdateFile.swift in Sources */,
 				6BC3E7A21E87A2FA00389903 /* DownloadManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,6 +343,7 @@
 				6BC3E79D1E87A2C400389903 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
