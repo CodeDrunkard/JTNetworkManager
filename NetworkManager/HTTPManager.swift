@@ -10,7 +10,9 @@ import Foundation
 
 public class HTTPManager: NSObject {
     
-    var localCerDatas = [Data]()
+    fileprivate var localCerDatas = [Data]()
+    fileprivate var localPKCSData = Data()
+    fileprivate var localPKCSPassword = ""
     
     public func request(_ url: String,
                         method: HTTPMethod = .GET,
@@ -166,42 +168,113 @@ public class HTTPManager: NSObject {
         }
         task.resume()
     }
+    
+    public func pinning(_ url: String,
+                        method: HTTPMethod = .GET,
+                        parameters: [String: Any]? = nil,
+                        headers: [String: String]? = nil,
+                        localCerDatas: [Data],
+                        localPKCSData: Data,
+                        localPKCSPassword: String) {
+        var newURL = url;
+        self.localCerDatas = localCerDatas;
+        self.localPKCSData = localPKCSData
+        self.localPKCSPassword = localPKCSPassword
+        
+        if method == .GET {
+            newURL += "?" + buildParams(parameters ?? [:])
+        }
+        var request = URLRequest(url: URL(string: newURL)!)
+        request.httpMethod = method.rawValue
+        
+        if method == .POST {
+            if let headers = headers {
+                for (headerField, headerValue) in headers {
+                    request.setValue(headerValue, forHTTPHeaderField: headerField)
+                }
+            }
+            request.httpBody = buildParams(parameters ?? [:]).data(using: .utf8)
+        }
+        
+        let sessionConfiguration = URLSession.shared.configuration
+        let session = URLSession(configuration: sessionConfiguration,
+                                 delegate: self,
+                                 delegateQueue: URLSession.shared.delegateQueue)
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if (data != nil) && (error == nil) {
+                let _ = String(data: data!, encoding: .utf8)
+                print("Pinning Success")
+            } else {
+                print(error.debugDescription)
+            }
+        }
+        task.resume()
+    }
 }
 
 extension HTTPManager: URLSessionDelegate {
     public func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         if localCerDatas.count == 0 {
-            completionHandler(Foundation.URLSession.AuthChallengeDisposition.useCredential, nil)
+            completionHandler(.useCredential, nil)
             return
         }
-        if let serverTrust = challenge.protectionSpace.serverTrust,
-            let certificate = SecTrustGetCertificateAtIndex(serverTrust, 0) {
-            let remoteCertificateData: Data = SecCertificateCopyData(certificate) as Data
-            
-            var checked = false
-            
-            for localCertificateData in localCerDatas {
-                if localCertificateData as Data == remoteCertificateData {
-                    if !checked {
-                        checked = true
+        
+        switch challenge.protectionSpace.authenticationMethod {
+        case NSURLAuthenticationMethodServerTrust:
+            if let serverTrust = challenge.protectionSpace.serverTrust,
+                let certificate = SecTrustGetCertificateAtIndex(serverTrust, 0) {
+                let remoteCertificateData: Data = SecCertificateCopyData(certificate) as Data
+                
+                var checked = false
+                
+                for localCertificateData in localCerDatas {
+                    if localCertificateData as Data == remoteCertificateData {
+                        if !checked {
+                            checked = true
+                        }
                     }
                 }
-            }
-            
-            if checked {
-                let credential = URLCredential(trust: serverTrust)
-                challenge.sender?.use(credential, for: challenge)
-                completionHandler(Foundation.URLSession.AuthChallengeDisposition.useCredential, credential)
-            } else {
-                challenge.sender?.cancel(challenge)
-                completionHandler(Foundation.URLSession.AuthChallengeDisposition.cancelAuthenticationChallenge, nil)
-                DispatchQueue.main.async {
-                    print("Pinning Error")
+                
+                if checked {
+                    let credential = URLCredential(trust: serverTrust)
+                    challenge.sender?.use(credential, for: challenge)
+                    completionHandler(.useCredential, credential)
+                } else {
+                    challenge.sender?.cancel(challenge)
+                    completionHandler(.cancelAuthenticationChallenge, nil)
+                    DispatchQueue.main.async {
+                        print("Pinning Error")
+                    }
+                    return
                 }
-                return
+            } else {
+                print("Get RemoteCertificateData error!")
             }
-        } else {
-            print("Get RemoteCertificateData or LocalCertificateData error!")
+            break
+        case NSURLAuthenticationMethodClientCertificate:
+            let localPKCSOptions = [kSecImportExportPassphrase as String: localPKCSPassword]
+            var localPKCSItems: CFArray?
+
+            let secState = SecPKCS12Import(localPKCSData as CFData, localPKCSOptions as CFDictionary, &localPKCSItems)
+            if secState == errSecSuccess, let certItems = localPKCSItems {
+                let dict = (certItems as Array).first;
+                if let certEntry = dict as? Dictionary<String, AnyObject> {
+                    let secIdentity = certEntry["identity"] as! SecIdentity
+                    let _ = certEntry["trust"] as! SecTrust
+                    let secChain = certEntry["chain"]
+                    
+                    let credential = URLCredential(identity: secIdentity, certificates: secChain as? [Any], persistence: .forSession)
+                    completionHandler(.useCredential, credential)
+                } else {
+                    completionHandler(.cancelAuthenticationChallenge, nil)
+                }
+            } else {
+                completionHandler(.cancelAuthenticationChallenge, nil)
+            }
+            break
+        default:
+            completionHandler(.cancelAuthenticationChallenge, nil)
+            break
         }
     }
 }

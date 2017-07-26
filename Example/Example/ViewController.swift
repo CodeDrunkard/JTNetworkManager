@@ -16,24 +16,24 @@ class ViewController: UIViewController {
         
         Network.request("https://httpbin.org/post",
                         method: .POST,
-                        parameters: ["key": "pitaaaaaaaaaaaaaaaya"],
+                        parameters: ["key": "parameters"],
                         headers: nil)
         
         Network.request("https://httpbin.org/get",
                         method: .GET,
-                        parameters: ["key": "pitaaaaaaaaaaaaaaaya"],
+                        parameters: ["key": "parameters"],
                         headers: nil)
         
         Network.request("https://httpbin.org/headers",
                         method: .GET,
                         parameters: nil,
-                        headers: ["Accept-Language": "Pitaya Language", "pitaaaaaaaaaaaaaaa": "ya"])
+                        headers: ["Accept-Language": "Pitaya Language", "parameters": "ya"])
         
-        let fileURL = Bundle(for: ViewController.self).url(forResource: "logo@2x", withExtension: "jpg")!
+        let fileURL = Bundle(for: ViewController.self).url(forResource: "Info", withExtension: "plist")!
         let file = UpdateFile(name: "file", url: fileURL)
-        Network.update("http://staticonsae.sinaapp.com/pitaya.php",
+        Network.update("https://updateurl",
                        files: [file],
-                       boundary: "PitayaUGl0YXlh")
+                       boundary: "boundary")
         
         let certURL = Bundle(for: ViewController.self).url(forResource: "lvwenhancom", withExtension: "cer")!
         let certData = try! Data(contentsOf: certURL)
