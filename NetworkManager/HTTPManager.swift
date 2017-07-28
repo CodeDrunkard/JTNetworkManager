@@ -218,7 +218,7 @@ extension HTTPManager: URLSessionDelegate {
             completionHandler(.useCredential, nil)
             return
         }
-        
+        print("host: " + challenge.protectionSpace.host)
         switch challenge.protectionSpace.authenticationMethod {
         case NSURLAuthenticationMethodServerTrust:
             if let serverTrust = challenge.protectionSpace.serverTrust,

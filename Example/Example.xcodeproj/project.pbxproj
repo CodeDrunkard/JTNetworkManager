@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B03E63E1F2B066E00E24F1A /* HTTPCookieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B03E63D1F2B066E00E24F1A /* HTTPCookieManager.swift */; };
 		6BC3E78D1E87A2C400389903 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC3E78C1E87A2C400389903 /* AppDelegate.swift */; };
 		6BC3E78F1E87A2C400389903 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC3E78E1E87A2C400389903 /* ViewController.swift */; };
 		6BC3E7921E87A2C400389903 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BC3E7901E87A2C400389903 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B03E63D1F2B066E00E24F1A /* HTTPCookieManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPCookieManager.swift; sourceTree = "<group>"; };
 		6BC3E7891E87A2C400389903 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BC3E78C1E87A2C400389903 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BC3E78E1E87A2C400389903 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				6BC3E79F1E87A2FA00389903 /* Download.swift */,
 				6BC3E7A01E87A2FA00389903 /* DownloadManager.swift */,
 				6BC3E7A41E88A60E00389903 /* HTTPManager.swift */,
+				6B03E63D1F2B066E00E24F1A /* HTTPCookieManager.swift */,
 				6BC3E7A61E88A6AE00389903 /* HTTPMethod.swift */,
 				6BE57A221F1C694300123447 /* UpdateFile.swift */,
 				6BE57A201F1C640A00123447 /* Network.swift */,
@@ -171,6 +174,7 @@
 				6BC3E7A11E87A2FA00389903 /* Download.swift in Sources */,
 				6BC3E78F1E87A2C400389903 /* ViewController.swift in Sources */,
 				6BC3E7A51E88A60E00389903 /* HTTPManager.swift in Sources */,
+				6B03E63E1F2B066E00E24F1A /* HTTPCookieManager.swift in Sources */,
 				6BC3E7A71E88A6AE00389903 /* HTTPMethod.swift in Sources */,
 				6BC3E78D1E87A2C400389903 /* AppDelegate.swift in Sources */,
 				6BE57A211F1C640A00123447 /* Network.swift in Sources */,
