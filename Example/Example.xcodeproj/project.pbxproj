@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6B03E63E1F2B066E00E24F1A /* HTTPCookieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B03E63D1F2B066E00E24F1A /* HTTPCookieManager.swift */; };
+		6B8000681F2EC17500670318 /* WWW in Resources */ = {isa = PBXBuildFile; fileRef = 6B8000671F2EC17500670318 /* WWW */; };
 		6BC3E78D1E87A2C400389903 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC3E78C1E87A2C400389903 /* AppDelegate.swift */; };
 		6BC3E78F1E87A2C400389903 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC3E78E1E87A2C400389903 /* ViewController.swift */; };
 		6BC3E7921E87A2C400389903 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BC3E7901E87A2C400389903 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		6B03E63D1F2B066E00E24F1A /* HTTPCookieManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPCookieManager.swift; sourceTree = "<group>"; };
+		6B8000671F2EC17500670318 /* WWW */ = {isa = PBXFileReference; lastKnownFileType = folder; path = WWW; sourceTree = "<group>"; };
 		6BC3E7891E87A2C400389903 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BC3E78C1E87A2C400389903 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BC3E78E1E87A2C400389903 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 		6BC3E7801E87A2C400389903 = {
 			isa = PBXGroup;
 			children = (
+				6B8000671F2EC17500670318 /* WWW */,
 				6BC3E79E1E87A2FA00389903 /* NetworkManager */,
 				6BC3E78B1E87A2C400389903 /* Example */,
 				6BC3E78A1E87A2C400389903 /* Products */,
@@ -159,6 +162,7 @@
 			files = (
 				6BC3E7971E87A2C400389903 /* LaunchScreen.storyboard in Resources */,
 				6BC3E7941E87A2C400389903 /* Assets.xcassets in Resources */,
+				6B8000681F2EC17500670318 /* WWW in Resources */,
 				6BC3E7921E87A2C400389903 /* Main.storyboard in Resources */,
 				6BE57A271F1C94E100123447 /* lvwenhancom.cer in Resources */,
 			);
